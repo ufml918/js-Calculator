@@ -6,8 +6,91 @@
 body {
     height: 99vh;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 header > h1 {
     text-align: center;
 }
+
+
+.content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    margin: 0;
+}
+
+.number, .operators > *, .buttons > *{
+    text-align: center;
+}
+
+.calculator {
+    border: solid 10px black;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+}
+
+.functions, .number.operators{
+    border: solid 2px gray;
+}
+
+.display{
+    flex: 1;
+    text-align: end;
+    background-color: #ffffff;
+}
+
+.buttons {
+    display: flex;
+    flex: 7;
+    background-color: rgb(203, 203, 203);
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+
+.functions {
+    display: flex;
+    flex: 1;
+}
+
+.functions > *{
+    flex: 1;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    flex: 4;
+
+}
+
+.operators{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.operators > *{
+    flex: 1;
+}
+
+
+.copyright {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
