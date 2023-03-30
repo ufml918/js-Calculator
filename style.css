@@ -1,6 +1,4 @@
-* {
-    border: solid red 2px;
-}
+
 
 
 body {
@@ -38,7 +36,7 @@ h2{
     height: 450px;
 }
 
-.functions, .number.operators{
+.buttons > *{
     border: solid 2px gray;
 }
 
@@ -46,6 +44,7 @@ h2{
     flex: 1;
     text-align: end;
     background-color: #ffffff;
+    padding-right: 5px;
 }
 
 .buttons {
@@ -66,8 +65,10 @@ h2{
     flex: 1;
 }
 
+
 .functions > *{
     flex: 1;
+    border: solid 2px gray;
 }
 
 .numbers {
@@ -75,6 +76,10 @@ h2{
     grid-template-columns: repeat(3,1fr);
     flex: 4;
 
+}
+
+.number{
+    border: solid 2px gray;
 }
 
 .operators{
@@ -85,6 +90,8 @@ h2{
 
 .operators > *{
     flex: 1;
+    border: solid 2px gray;
+    border-left: none;
 }
 
 
@@ -93,4 +100,10 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
+.onClick {
+    width: 90%;
+    height: 90%;
+    justify-self: center;
+    align-self:center;
+    border: none;
+}
