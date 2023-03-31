@@ -45,6 +45,7 @@ h2{
     text-align: end;
     background-color: #ffffff;
     padding-right: 5px;
+    overflow: hidden;
 }
 
 .buttons {
