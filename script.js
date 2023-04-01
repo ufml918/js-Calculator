@@ -1,5 +1,7 @@
 //for display
 let display = document.querySelector('.display');
+let opDisplay = document.querySelector('.opDisplay');
+let preDisplay = document.querySelector('.preNum');
 const buttoms = document.querySelector('.buttons');
 const numbers = document.querySelectorAll('.number');
 const functions = document.querySelectorAll('.function');
@@ -8,11 +10,12 @@ const operators = document.querySelectorAll('.operator');
 //for calculate
 let tempNum = 0;
 let preNum = 0;
-let oper;
+let nowOper = '';
+let preOper = '';
 
 //check i/o
 let mouse = false;
-let keyboard = true;
+let keyboard = false;
 
 //inputs
 function mouseAction(){
@@ -75,6 +78,11 @@ function addFunc(e){
 
 function addOp(e){
     operators.forEach(element => {
+        //deal with =
+        if(tempNum !== 0 && nowOper === '='){
+            preNum = tempNum;
+        }
+
         if(element.innerText === e.target.innerText || element.innerText === e.key){
             element.classList.add("onClick");   
             if(mouse === true){
@@ -82,7 +90,13 @@ function addOp(e){
             }else if(keyboard === true){
                 getOperByBoard(e)
             }
-            display.innerText = oper;         
+
+            //change the display
+            opDisplay.innerText = nowOper; 
+            calculate(parseFloat(tempNum),preOper)
+            tempNum = 0;
+            display.innerText = tempNum;
+            preDisplay.innerText = preNum;        
         }
     });
 }
@@ -115,33 +129,65 @@ function del(e){
     }else if(e.target.innerText === "clear"){
         tempNum = 0;
         display.innerText = tempNum;
+        nowOper = '';
+        preOper = '';
+        preNum = 0;
+        preDisplay.innerText = preNum;
     }
 }
 
 //get operators
 function getOperByMouse(e){
-    return oper = e.target.innerText;
+    preOper = nowOper;
+    return nowOper = e.target.innerText;
 }
 
 function getOperByBoard(e){
-    return oper = e.key;
+    preOper = nowOper;
+    return nowOper = e.key;
 }
 
 //calculations
-function add(a,b){
-    return a+b;
+function calculate(a,oper){
+    switch(oper){
+        case '+':
+            add(a);
+            break;
+
+        case '-':
+            sub(a);
+            break;
+
+        case '*':
+            mul(a);
+            break;
+
+        case '/':
+            div(a);
+            break;
+
+        case '':
+            preNum = a;
+            break;
+
+
+    }
 }
 
-function sub(a,b){
-    return a-b;
+function add(a){
+    return preNum += a;
 }
 
-function mul(a,b){
-    return a*b;
+function sub(a){
+    return preNum -= a;
 }
 
-function div(a,b){
-    return a/b;
+function mul(a){
+    return preNum *= a;
+}
+
+function div(a){
+    return preNum /= a;
 }
 
 
@@ -153,3 +199,4 @@ function main(){
 }
 
 main()
+
